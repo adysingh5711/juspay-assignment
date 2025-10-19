@@ -65,7 +65,7 @@ const graphChild = ({ theme }: { theme: string }) => {
                     {Object.values(groupedData).map((entry: any, index: number) => (
                         <div key={index} className="flex items-center gap-1 p-1 text-xs" style={{ color: theme === 'dark' ? 'white' : 'black' }}>
                             <div className='w-2 h-2 rounded-full' style={{ backgroundColor: entry.color }}></div>
-                            {entry.name}: <span className='font-thin'>${entry.value?.toLocaleString()}</span>
+                            {entry.name}: <span className='font-normal'>${entry.value?.toLocaleString()}</span>
                         </div>
                     ))}
                 </motion.div>
@@ -152,7 +152,7 @@ const legendChild = ({ theme }: { theme: string }) => {
             >
                 <Separator direction="vertical" color={theme === 'dark' ? '#C6C7F8' : '#000000'} length="100%" />
                 <div className={`w-2 h-2 rounded-full  ${theme === 'dark' ? 'bg-[#C6C7F8]' : 'bg-[#000000]'}`}></div>
-                <p className="font-thin">Current Week <span className="font-semibold">${currentTotal.toLocaleString()}</span></p>
+                <p className="font-normal">Current Week <span className="font-semibold">${currentTotal.toLocaleString()}</span></p>
             </motion.div>
             <motion.div
                 className="flex items-center gap-2"
@@ -161,7 +161,7 @@ const legendChild = ({ theme }: { theme: string }) => {
                 transition={{ duration: 0.3, delay: 1.0 }}
             >
                 <div className={`w-2 h-2 rounded-full bg-[#A8C5DA]`}></div>
-                <p className="font-thin">Previous Week <span className="font-semibold">${previousTotal.toLocaleString()}</span></p>
+                <p className="font-normal">Previous Week <span className="font-semibold">${previousTotal.toLocaleString()}</span></p>
             </motion.div>
         </motion.div>
     );

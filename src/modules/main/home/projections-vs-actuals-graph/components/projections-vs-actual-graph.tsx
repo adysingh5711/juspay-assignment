@@ -51,7 +51,7 @@ const graphChild = ({ theme }: { theme: string }) => {
                     {payload.map((entry: any, index: number) => (
                         <div key={index} className="text-xs p-1 flex items-center gap-1" style={{ color: theme === 'dark' ? 'white' : 'black' }}>
                             <div className='w-2 h-2 rounded-full' style={{ backgroundColor: entry.color }}></div>
-                            {entry.name}: <span className='font-thin'>${entry.value?.toLocaleString()}</span>
+                            {entry.name}: <span className='font-normal'>${entry.value?.toLocaleString()}</span>
                         </div>
                     ))}
                 </motion.div>

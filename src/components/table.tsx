@@ -57,7 +57,7 @@ export function Table<TData>({ columns, data, getRowClassName, selectedRows }: T
                 <th
                   key={header.id}
                   scope="col"
-                  className={`px-6 py-3 font-normal border-b ${theme === 'dark' ? 'border-white/10 text-white/80' : "text-black/40 border-b-black/20"}`}
+                  className={`px-6 py-3 font-medium border-b ${theme === 'dark' ? 'border-white/10 text-white/80' : "text-black/40 border-b-black/20"}`}
                 >
                   {header.isPlaceholder
                     ? null
@@ -87,7 +87,7 @@ export function Table<TData>({ columns, data, getRowClassName, selectedRows }: T
                 {row.getVisibleCells().map((cell, index, array) => (
                   <td
                     key={cell.id}
-                    className={`px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-thin ${theme === 'dark' ? 'text-white/80' : 'text-black'}
+                    className={`px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-normal ${theme === 'dark' ? 'text-white/80' : 'text-black'}
                     ${index === 0 ? 'rounded-l-lg' : ''} 
                     ${index === array.length - 1 ? 'rounded-r-lg' : ''}`}
                   >

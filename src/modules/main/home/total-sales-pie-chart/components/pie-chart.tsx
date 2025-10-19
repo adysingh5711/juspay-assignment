@@ -87,7 +87,7 @@ const TotalSalesChart = () => {
 
       {/* Legend */}
       <motion.div
-        className={`flex flex-col gap-3 sm:gap-4 w-full font-thin ${theme === 'dark' ? 'text-white/80' : 'text-black'}`}
+        className={`flex flex-col gap-3 sm:gap-4 w-full font-normal ${theme === 'dark' ? 'text-white/80' : 'text-black'}`}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.4 }}
@@ -106,7 +106,7 @@ const TotalSalesChart = () => {
               <span className="w-2 h-2 rounded-full" style={{ backgroundColor: theme === 'dark' ? entry.darkModeColor : entry.color }}></span>
               <span className="truncate">{entry.name}</span>
             </div>
-            <span className="font-thin">${entry.value.toFixed(2)}</span>
+            <span className="font-normal">${entry.value.toFixed(2)}</span>
           </motion.div>
         ))}
       </motion.div>
