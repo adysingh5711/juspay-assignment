@@ -1,7 +1,17 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom'
+import { lazy, Suspense } from 'react'
 import { LayoutContainer } from './modules/components/layout-container'
-import { Home } from './modules/main/home/components/home'
-import { OrderList } from './modules/main/order-list/components/order-list'
+
+// Lazy load route components for code splitting
+const Home = lazy(() => import('./modules/main/home/components/home').then(module => ({ default: module.Home })))
+const OrderList = lazy(() => import('./modules/main/order-list/components/order-list').then(module => ({ default: module.OrderList })))
+
+// Loading component for Suspense fallback
+const RouteLoader = () => (
+  <div className="flex items-center justify-center min-h-[400px]">
+    <div className="animate-spin w-8 h-8 border-b-2 border-gray-900 rounded-full"></div>
+  </div>
+)
 
 /**
  * Router Configuration
@@ -27,11 +37,19 @@ export const router = createBrowserRouter([
       },
       {
         path: 'dashboard/default',
-        element: <Home />,
+        element: (
+          <Suspense fallback={<RouteLoader />}>
+            <Home />
+          </Suspense>
+        ),
       },
       {
         path: 'dashboard/order-list',
-        element: <OrderList />,
+        element: (
+          <Suspense fallback={<RouteLoader />}>
+            <OrderList />
+          </Suspense>
+        ),
       },
       {
         path: '*',
