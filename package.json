@@ -9,13 +9,9 @@
     "@tanstack/react-table": "^8.21.3",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/react": "^16.3.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^30.0.0",
     "@types/node": "^24.0.15",
-    "@types/react-router-dom": "^5.3.3",
     "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",
-    "d3-shape": "^3.2.0",
     "framer-motion": "^12.23.6",
     "leaflet": "^1.9.4",
     "phosphor-react": "^1.4.1",
@@ -24,17 +20,16 @@
     "react-leaflet": "^5.0.0",
     "react-router-dom": "^6.30.1",
     "recharts": "^3.1.0",
-    "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4"
+    "typescript": "^4.9.5"
   },
   "scripts": {
     "dev": "vite",
     "start": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview --port 4173",
-    "test": "vitest",
-    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,md}\"",
-    "format:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx,json,css,md}\"",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
     "vercel-build": "npm run build"
   },
   "browserslist": {
@@ -50,16 +45,25 @@
     ]
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.28.3",
+    "@babel/preset-react": "^7.27.1",
+    "@babel/preset-typescript": "^7.27.1",
     "@testing-library/jest-dom": "^6.9.1",
+    "@types/jest": "^30.0.0",
     "@types/leaflet": "^1.9.20",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
     "@vitejs/plugin-react": "^5.0.4",
     "autoprefixer": "^10.4.21",
+    "babel-jest": "^30.2.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^30.2.0",
+    "jest-environment-jsdom": "^30.2.0",
+    "jest-transform-stub": "^2.0.0",
     "postcss": "^8.5.6",
     "prettier": "3.6.2",
     "tailwindcss": "^4.1.14",
-    "vite": "^7.1.10",
-    "vitest": "^3.2.4"
+    "ts-jest": "^29.4.5",
+    "vite": "^7.1.10"
   }
 }

@@ -72,7 +72,6 @@ This project implements a comprehensive SaaS dashboard with advanced data visual
 - **React Leaflet 5.0.0**: Interactive maps with Leaflet integration
 
 ### Development Tools
-- **Vitest 3.2.4**: Fast unit testing framework
 - **Prettier 3.6.2**: Code formatting and consistency
 - **PostCSS 8.5.6**: CSS processing and optimization
 - **Autoprefixer 10.4.21**: Automatic vendor prefixing
