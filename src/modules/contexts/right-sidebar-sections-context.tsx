@@ -1,5 +1,24 @@
 import { createContext, useContext, useState, ReactNode } from 'react';
 
+/**
+ * Right Sidebar Sections Context
+ * 
+ * This context manages the dynamic reordering of sections in the right sidebar.
+ * I've implemented this to allow users to prioritize different sections (notifications
+ * or activities) based on their current needs, enhancing the user experience.
+ * 
+ * Key features:
+ * - Dynamic section reordering with smooth animations
+ * - Animation key tracking for Framer Motion transitions
+ * - Independent functions for setting section priority
+ * - Type-safe section management
+ * 
+ * Design rationale:
+ * - Separating this from the main sidebar context follows the single responsibility principle
+ * - Animation key ensures proper re-animation when sections reorder
+ * - Provides granular control over sidebar content organization
+ */
+
 type SectionType = 'notifications' | 'activities';
 
 interface RightSidebarSectionsContextType {

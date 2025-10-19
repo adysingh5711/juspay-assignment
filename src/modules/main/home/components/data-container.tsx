@@ -1,20 +1,52 @@
 import { useTheme } from "../../../contexts/theme-context"
 import { motion } from "framer-motion"
 
-export const DataContainer = ({headingChild, graphChild, legendChild, justifyCenter=false}:{headingChild:React.ReactNode, graphChild:React.ReactNode, legendChild?:React.ReactNode, justifyCenter?:boolean}) => {
-    const {theme} = useTheme()
-    return(
-        <motion.div 
-            className={`${theme === 'dark' ? 'bg-white/5' : 'bg-[#F7F9FB]'} p-4 sm:p-6 rounded-[16px] flex flex-col gap-4 ${justifyCenter ? 'justify-center': "justify-start"}`}
+/**
+ * DataContainer Component
+ * 
+ * A reusable container component for all chart/graph widgets in the dashboard.
+ * This component provides consistent styling, animations, and layout structure
+ * for data visualization components.
+ * 
+ * Key features:
+ * - Consistent padding and spacing across all charts
+ * - Theme-aware background colors
+ * - Smooth entrance animations (fade + slide)
+ * - Subtle hover effect for depth perception
+ * - Optional legend support with visual separator
+ * - Flexible content alignment
+ * - Staggered child animations for visual hierarchy
+ * 
+ * Animation strategy:
+ * - Container: Fades in and slides up on mount
+ * - Heading: Animates slightly before content
+ * - Graph: Delayed entrance for progressive disclosure
+ * - Hover: Subtle lift effect without being distracting
+ * 
+ * Layout flexibility:
+ * - justifyCenter prop allows vertical centering when needed
+ * - Optional legend child with automatic separator
+ * - Responsive padding (smaller on mobile)
+ * 
+ * @param headingChild - React node for the chart title/heading
+ * @param graphChild - React node containing the chart component
+ * @param legendChild - Optional React node for legend/additional info
+ * @param justifyCenter - Whether to vertically center content (default: false)
+ */
+export const DataContainer = ({ headingChild, graphChild, legendChild, justifyCenter = false }: { headingChild: React.ReactNode, graphChild: React.ReactNode, legendChild?: React.ReactNode, justifyCenter?: boolean }) => {
+    const { theme } = useTheme()
+    return (
+        <motion.div
+            className={`${theme === 'dark' ? 'bg-white/5' : 'bg-[#F7F9FB]'} p-4 sm:p-6 rounded-[16px] flex flex-col gap-4 ${justifyCenter ? 'justify-center' : "justify-start"}`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
-            whileHover={{ 
+            whileHover={{
                 y: -2,
                 transition: { duration: 0.2 }
             }}
         >
-            <motion.div 
+            <motion.div
                 className={`${theme === 'dark' ? 'text-white' : 'text-black'} flex items-center gap-4`}
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}

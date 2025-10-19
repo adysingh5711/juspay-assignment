@@ -3,6 +3,27 @@ import { Table } from '../../../../components/table';
 import { useTheme } from '../../../contexts/theme-context';
 import { orderListColumns } from '../constants/order-list-columns';
 
+/**
+ * OrderListTable Component
+ * 
+ * This component wraps the generic Table component with order-specific configuration
+ * and styling. I've implemented custom row className logic to handle selection
+ * states with proper visual feedback.
+ * 
+ * Key features:
+ * - Integrates with generic Table component
+ * - Custom row selection styling
+ * - Theme-aware row hover effects
+ * - Column configuration with checkboxes
+ * - Efficient row rendering
+ * 
+ * Design decisions:
+ * - Separated table logic from rendering for better maintainability
+ * - Row selection state visually distinguished with background color
+ * - Hover effects enhance interactivity without being distracting
+ * - Proper TypeScript typing for type safety
+ */
+
 interface OrderListTableProps {
   data: OrderListTableType[];
   selectedRows: string[];

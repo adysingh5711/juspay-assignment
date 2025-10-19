@@ -4,6 +4,31 @@ import { ArrowsDownUp, FunnelSimple, Plus, CaretDown } from 'phosphor-react';
 import { useTheme } from '../../../contexts/theme-context';
 import { StatusType } from '../types/order-list-table-type';
 
+/**
+ * Order List Header Component
+ * 
+ * This component provides a comprehensive toolbar for order list management with
+ * search, filtering, and sorting capabilities. I've implemented a polished UI
+ * with dropdown filters and visual indicators for active filters.
+ * 
+ * Key features:
+ * - Real-time search functionality
+ * - Multi-criteria filtering (status, date)
+ * - Sort direction toggle with visual indicator
+ * - Filter dropdown with "click outside to close" behavior
+ * - Active filter indicator dot
+ * - Clear all filters functionality
+ * - Responsive layout (mobile/desktop)
+ * - Theme-aware styling
+ * 
+ * UX Enhancements:
+ * - Visual feedback for active filters (blue dot indicator)
+ * - Hover effects on all interactive elements
+ * - Smooth animations for dropdown appearance
+ * - Proper z-index management for overlays
+ * - Accessible click-outside handling
+ */
+
 type SortField = 'id' | 'username' | 'projectName' | 'address' | 'date' | 'status';
 type SortDirection = 'asc' | 'desc';
 
@@ -25,7 +50,20 @@ interface OrderListHeaderProps {
   onClearFilters: () => void;
 }
 
-// Custom Select Component
+/**
+ * CustomSelect Component
+ * 
+ * A custom-styled select dropdown that provides better control over appearance
+ * and behavior compared to native select elements. Implements proper keyboard
+ * navigation and accessibility features.
+ * 
+ * Features:
+ * - Click outside to close functionality
+ * - Smooth open/close animations
+ * - Selected state highlighting
+ * - Theme-aware styling
+ * - Proper event cleanup
+ */
 interface CustomSelectProps {
   value: string;
   onChange: (value: string) => void;

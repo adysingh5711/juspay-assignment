@@ -4,6 +4,35 @@ import { DetailsType } from "../types/details-type";
 import { motion } from "framer-motion";
 import { useNavigate } from 'react-router-dom'
 
+/**
+ * DetailCard Component
+ * 
+ * This component displays a single KPI metric card with value, trend indicator,
+ * and optional navigation functionality. I've added micro-interactions and
+ * accessibility features to enhance user experience.
+ * 
+ * Key features:
+ * - Theme-aware color customization for each metric
+ * - Animated trend indicators (up/down arrows)
+ * - Hover effects with subtle scaling and shadow
+ * - Entrance animations for visual interest
+ * - Clickable navigation for 'Orders' card
+ * - Full keyboard accessibility (Enter/Space to activate)
+ * - Semantic HTML with proper ARIA attributes
+ * 
+ * Animation strategy:
+ * - Staggered animations for value and trend indicator
+ * - Smooth hover transitions without jarring movement
+ * - Scale and shadow effects for depth perception
+ * 
+ * Accessibility:
+ * - Proper role="button" for interactive cards
+ * - Tab navigation support with tabIndex
+ * - Keyboard event handling for Enter and Space keys
+ * - Prevents default space scrolling behavior
+ * 
+ * @param detail - The KPI data including title, value, change percentage, and styling
+ */
 export const DetailCard = ({ detail }: { detail: DetailsType }) => {
     const { theme } = useTheme()
     const navigate = useNavigate()

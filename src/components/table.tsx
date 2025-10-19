@@ -8,6 +8,29 @@ import {
 import { useTheme } from "../modules/contexts/theme-context";
 import { useState } from "react";
 
+/**
+ * Generic Table Component
+ * 
+ * This is a reusable table component built on TanStack Table v8 for maximum flexibility
+ * and performance. I chose TanStack Table for its excellent TypeScript support, headless
+ * UI architecture, and powerful features for sorting, filtering, and pagination.
+ * 
+ * Key features:
+ * - Generic type support for type-safe data rendering
+ * - Theme-aware styling with proper contrast ratios
+ * - Row selection with visual feedback
+ * - Hover states with smooth transitions
+ * - Responsive design with horizontal scrolling on mobile
+ * - Custom row styling via getRowClassName prop
+ * 
+ * Performance considerations:
+ * - Uses TanStack Table's built-in memoization
+ * - Efficient row rendering with proper key management
+ * - Local hover state for each row to prevent global re-renders
+ * 
+ * @template TData - The type of data being displayed in the table
+ */
+
 interface TableProps<TData> {
   columns: ColumnDef<TData>[];
   data: TData[];

@@ -7,6 +7,32 @@ import { DataContainer } from '../../components/data-container';
 import { useTheme } from '../../../../contexts/theme-context';
 import { motion } from 'framer-motion';
 
+/**
+ * Projections vs Actuals Graph Component
+ * 
+ * This component visualizes projected vs actual values using a dual-bar chart.
+ * I've chosen overlapping bars with different opacities to create a visual
+ * comparison that's easy to understand at a glance.
+ * 
+ * Key features:
+ * - Dual-bar chart with overlapping bars for direct comparison
+ * - Theme-aware bar colors with adjusted opacity
+ * - Custom tooltip with formatted values
+ * - Rounded bar corners for modern aesthetic
+ * - Smooth entrance animations
+ * - Responsive sizing with proper aspect ratios
+ * 
+ * Design decisions:
+ * - Lighter projection bars behind darker actual bars
+ * - Overlapping bars (negative barGap) to save horizontal space
+ * - Consistent styling with other graph components
+ * - Custom tooltip animations for smooth interactions
+ * 
+ * Performance optimization:
+ * - Uses Recharts' built-in performance features
+ * - Efficient re-rendering with proper key management
+ */
+
 const headingChild = <p className='text-sm font-semibold'>Projections vs Actuals</p>
 
 const graphChild = ({ theme }: { theme: string }) => {
@@ -18,8 +44,8 @@ const graphChild = ({ theme }: { theme: string }) => {
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.2 }}
                     className={`px-3 py-2 rounded-lg border border-black/10 shadow-[#A7C4D9] ${theme === 'dark'
-                            ? 'bg-[#191919] text-white border-white/20'
-                            : 'text-black bg-white'
+                        ? 'bg-[#191919] text-white border-white/20'
+                        : 'text-black bg-white'
                         }`}
                 >
                     {payload.map((entry: any, index: number) => (

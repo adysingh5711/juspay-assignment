@@ -1,5 +1,31 @@
 import { useTheme } from '../../../contexts/theme-context';
 
+/**
+ * OrderListPagination Component
+ * 
+ * This component provides an intelligent pagination control with responsive
+ * behavior and smart page number display. I've implemented a window-based
+ * pagination approach that shows a maximum of 5 page numbers at a time.
+ * 
+ * Key features:
+ * - Responsive design (simplified on mobile, full on desktop)
+ * - Smart page number display (shows 5 pages max)
+ * - Dynamic page window based on current page
+ * - Previous/Next button with disabled states
+ * - Active page highlighting
+ * - Theme-aware styling
+ * - Accessible button states
+ * 
+ * Pagination Logic:
+ * - If total pages ≤ 5: show all pages
+ * - If current page ≤ 3: show pages 1-5
+ * - If current page ≥ totalPages - 2: show last 5 pages
+ * - Otherwise: show current page ± 2 pages
+ * 
+ * This approach ensures users always see relevant page numbers without
+ * overwhelming the UI with too many buttons.
+ */
+
 interface OrderListPaginationProps {
   currentPage: number;
   totalPages: number;

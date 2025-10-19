@@ -12,6 +12,18 @@ export default {
       },
       screens: {
         'custom-md': '500px'
+      },
+      colors: {
+        'primary-black': '#1c1c1c',
+      },
+      textColor: {
+        'black': '#1c1c1c',
+      },
+      borderColor: {
+        'black': '#1c1c1c',
+      },
+      backgroundColor: {
+        'black': '#1c1c1c',
       }
     },
   },
