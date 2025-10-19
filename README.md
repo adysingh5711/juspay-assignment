@@ -63,7 +63,7 @@ This project implements a comprehensive SaaS dashboard with advanced data visual
 - **React 19.1.0**: Latest React with concurrent features
 - **TypeScript 4.9.5**: Full type safety and enhanced developer experience
 - **Vite 7.1.10**: Fast build tool with HMR and optimized bundling
-- **Tailwind CSS 3.4.17**: Utility-first CSS framework for rapid styling
+- **Tailwind CSS 4.1.14**: Utility-first CSS framework for rapid styling
 
 ### UI and Animation
 - **Framer Motion 12.23.6**: Production-ready motion library for animations
@@ -241,7 +241,7 @@ The application supports multiple environments:
 
 ## Challenges Faced
 
-**SubList Icon Spacing Complexity**: Setting up the subList in the left sidebar presented significant challenges. The Figma design showed spacing for sub-items but no actual icons, while main headings required icons. Initial attempts using padding proved inadequate for responsive design. The solution involved implementing an empty <div className="size-4"></div> container for subList items that maintains the same space allocation as the icon container in main items, providing better responsive behavior and visual consistency.
+**SubList Icon Spacing Complexity**: Setting up the subList in the left sidebar presented significant challenges. The Figma design showed spacing for sub-items but no actual icons, while main headings required icons. Initial attempts using padding proved inadequate for responsive design. The solution involved implementing an empty `<div className="size-4"></div>` container for subList items that maintains the same space allocation as the icon container in main items, providing better responsive behavior and visual consistency.
 
 **Data Integrity in Sorting**: The original Figma design contained repeated IDs after every 5 items, which caused sorting functionality to break by grouping identical IDs together. This required a workaround by modifying the data structure to ensure unique identifiers while maintaining the visual design integrity and sorting performance.
 
@@ -261,11 +261,11 @@ The application supports multiple environments:
 
 ### Performance Optimizations
 
-**Code Splitting**: Implemented route-based code splitting to reduce initial bundle size. Each major feature loads independently, improving Time to Interactive.
+**Code Splitting**: Implemented route-based code splitting using React.lazy() and Suspense to reduce initial bundle size. Each major feature loads independently, improving Time to Interactive.
 
 **Lazy Loading**: Components load on-demand using React.lazy() and Suspense, reducing initial JavaScript payload.
 
-**Memoization**: Strategic use of useMemo and useCallback to prevent unnecessary re-renders in data-intensive components.
+**Memoization**: Strategic use of useCallback in context providers to prevent unnecessary re-renders in data-intensive components.
 
 **Bundle Optimization**: Custom Vite configuration with manual chunk splitting for optimal caching and loading performance.
 
@@ -289,15 +289,15 @@ The application supports multiple environments:
 - **Vendor Chunking**: Separate vendor bundles for better caching
 
 ### Runtime Performance
-- **Memoization**: Prevented unnecessary re-renders with React.memo
-- **Efficient Filtering**: Optimized search and filter algorithms
-- **Virtual Scrolling**: For large data sets (implemented in table components)
-- **Debounced Search**: Reduced API calls and improved user experience
+- **Memoization**: Strategic use of useCallback in contexts to prevent unnecessary re-renders
+- **Efficient Filtering**: Optimized search and filter algorithms with real-time filtering
+- **Pagination**: Efficient data pagination to limit DOM rendering (10 items per page)
+- **Real-time Search**: Immediate search across multiple fields without debouncing
 
 ### Loading Performance
-- **Lazy Loading**: Components load on-demand
-- **Preloading**: Critical resources preloaded for faster initial render
-- **Caching Strategy**: Optimized cache headers for static assets
+- **Lazy Loading**: Components load on-demand using React.lazy() and Suspense
+- **Route-based Code Splitting**: Each major feature loads independently
+- **Bundle Optimization**: Manual chunk splitting for optimal caching and loading performance
 
 ## Accessibility
 
@@ -323,8 +323,8 @@ The application supports multiple environments:
 - **Edge**: 90+ (latest 2 versions)
 
 ### Progressive Enhancement
-- **Core Functionality**: Works without JavaScript
-- **Enhanced Experience**: Full features with modern browsers
+- **Core Functionality**: Basic functionality works with JavaScript disabled
+- **Enhanced Experience**: Full features with modern browsers and JavaScript enabled
 
 ### Testing Matrix
 - **Desktop**: Windows, macOS, Linux

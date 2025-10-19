@@ -28,7 +28,7 @@ export const OrderListTable = ({
   const getRowClassName = (_row: OrderListTableType, isSelected: boolean, currentTheme: string): string => {
     return isSelected
       ? (currentTheme === 'dark' ? 'bg-white/10' : 'bg-blue-50')
-      : (currentTheme === 'dark' ? 'hover:bg-white/10' : 'hover:bg-gray-50');
+      : (currentTheme === 'dark' ? 'hover:bg-white/10' : 'hover:bg-[#F7F9FB]');
   };
 
   return (

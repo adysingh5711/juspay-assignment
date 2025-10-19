@@ -32,22 +32,22 @@ export const OrderListTableHeader = ({
             />
           </div>
         </th>
-        <th scope="col" className="px-6 py-3 text-left text-sm font-medium text-neutral-400 tracking-wider">
+        <th scope="col" className="text-neutral-400 px-6 py-3 text-sm font-medium tracking-wider text-left">
           Order ID
         </th>
-        <th scope="col" className="px-6 py-3 text-left text-sm font-medium text-neutral-400 tracking-wider">
+        <th scope="col" className="text-neutral-400 px-6 py-3 text-sm font-medium tracking-wider text-left">
           User
         </th>
-        <th scope="col" className="px-6 py-3 text-left text-sm font-medium text-neutral-400 tracking-wider">
+        <th scope="col" className="text-neutral-400 px-6 py-3 text-sm font-medium tracking-wider text-left">
           Project
         </th>
-        <th scope="col" className="px-6 py-3 text-left text-sm font-medium text-neutral-400 tracking-wider">
+        <th scope="col" className="text-neutral-400 px-6 py-3 text-sm font-medium tracking-wider text-left">
           Address
         </th>
-        <th scope="col" className="px-6 py-3 text-left text-sm font-medium text-neutral-400 tracking-wider">
+        <th scope="col" className="text-neutral-400 px-6 py-3 text-sm font-medium tracking-wider text-left">
           Date
         </th>
-        <th scope="col" className="px-6 py-3 text-left text-sm font-medium text-neutral-400 tracking-wider">
+        <th scope="col" className="text-neutral-400 px-6 py-3 text-sm font-medium tracking-wider text-left">
           Status
         </th>
       </tr>
