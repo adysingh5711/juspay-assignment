@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { orderListTableData } from '../data/order-list-table-data';
 import { OrderListHeader } from '../components/order-list-header';
 import { OrderListTable } from '../components/order-list-table';
@@ -34,7 +34,7 @@ interface FilterState {
   date: string | 'all';
 }
 
-export const OrderList: React.FC = () => {
+export const OrderList = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedRows, setSelectedRows] = useState<string[]>([]);

@@ -35,7 +35,7 @@ const processedData = RevenueData.map((d, idx) => ({
 
 
 const graphChild = ({ theme }: { theme: string }) => {
-    const CustomTooltip = ({ active, payload, label }: any) => {
+    const CustomTooltip = ({ active, payload }: any) => {
         if (active && payload && payload.length) {
             // Filter out null values and combine current week data
             const filteredPayload = payload.filter((entry: any) => entry.value !== null);

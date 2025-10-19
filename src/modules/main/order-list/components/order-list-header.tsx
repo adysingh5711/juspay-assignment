@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { SearchInput } from '../../../../components/search-input';
 import { ArrowsDownUp, FunnelSimple, Plus, CaretDown } from 'phosphor-react';
 import { useTheme } from '../../../contexts/theme-context';
@@ -34,13 +34,13 @@ interface CustomSelectProps {
   className?: string;
 }
 
-const CustomSelect: React.FC<CustomSelectProps> = ({
+const CustomSelect = ({
   value,
   onChange,
   options,
   placeholder,
   className = ''
-}) => {
+}: CustomSelectProps) => {
   const { theme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
   const selectRef = useRef<HTMLDivElement>(null);
@@ -68,29 +68,26 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className={`w-full flex items-center justify-between px-3 py-2.5 text-sm rounded-lg border transition-colors ${
-          theme === 'dark' 
-            ? 'bg-black border-gray-600 text-white hover:border-gray-500' 
-            : 'bg-white border-gray-300 text-gray-900 hover:border-gray-400'
-        } focus:outline-none focus:ring-2 focus:ring-[#black/40]`}
+        className={`w-full flex items-center justify-between px-3 py-2.5 text-sm rounded-lg border transition-colors ${theme === 'dark'
+          ? 'bg-black border-gray-600 text-white hover:border-gray-500'
+          : 'bg-white border-gray-300 text-gray-900 hover:border-gray-400'
+          } focus:outline-none focus:ring-2 focus:ring-[#black/40]`}
       >
         <span className={selectedOption ? '' : 'text-gray-500'}>
           {selectedOption ? selectedOption.label : placeholder}
         </span>
-        <CaretDown 
-          size={12} 
-          className={`transition-transform ${isOpen ? 'rotate-180' : ''} ${
-            theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
-          }`}
+        <CaretDown
+          size={12}
+          className={`transition-transform ${isOpen ? 'rotate-180' : ''} ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
+            }`}
         />
       </button>
-      
+
       {isOpen && (
-        <div className={`absolute top-full left-0 right-0 mt-1 z-50 rounded-lg shadow-lg border ${
-          theme === 'dark' 
-            ? 'bg-black border-gray-600' 
-            : 'bg-white border-gray-200'
-        }`}>
+        <div className={`absolute top-full left-0 right-0 mt-1 z-50 rounded-lg shadow-lg border ${theme === 'dark'
+          ? 'bg-black border-gray-600'
+          : 'bg-white border-gray-200'
+          }`}>
           <div className="py-1">
             {options.map((option) => (
               <button
@@ -100,15 +97,14 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
                   onChange(option.value);
                   setIsOpen(false);
                 }}
-                  className={`w-full text-left px-3 py-2 text-sm transition-colors ${
-                   option.value === value
-                     ? theme === 'dark' 
-                       ? 'bg-white/10 text-white' 
-                       : 'bg-black/5 text-black'
-                     : theme === 'dark'
-                       ? 'text-white hover:bg-white/10'
-                       : 'text-black hover:bg-black/5'
-                 }`}
+                className={`w-full text-left px-3 py-2 text-sm transition-colors ${option.value === value
+                  ? theme === 'dark'
+                    ? 'bg-white/10 text-white'
+                    : 'bg-black/5 text-black'
+                  : theme === 'dark'
+                    ? 'text-white hover:bg-white/10'
+                    : 'text-black hover:bg-black/5'
+                  }`}
               >
                 {option.label}
               </button>
@@ -120,7 +116,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
   );
 };
 
-export const OrderListHeader: React.FC<OrderListHeaderProps> = ({
+export const OrderListHeader = ({
   searchTerm,
   onSearchChange,
   onSort,
@@ -131,13 +127,13 @@ export const OrderListHeader: React.FC<OrderListHeaderProps> = ({
   filters,
   onFilterChange,
   onClearFilters
-}) => {
-  const {theme} = useTheme()
+}: OrderListHeaderProps) => {
+  const { theme } = useTheme()
   const filterRef = useRef<HTMLDivElement>(null);
-  
+
   // Check if any filters are active
   const hasActiveFilters = filters.status !== 'all' || filters.date !== 'all';
-  
+
   // Click outside handler
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -154,7 +150,7 @@ export const OrderListHeader: React.FC<OrderListHeaderProps> = ({
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [showFilters, onFilterToggle]);
-  
+
   const handleSortClick = () => {
     // Cycle through sort fields: id -> username -> projectName -> address -> date -> status -> id
     const sortFields: SortField[] = ['id', 'username', 'projectName', 'address', 'date', 'status'];
@@ -183,14 +179,14 @@ export const OrderListHeader: React.FC<OrderListHeaderProps> = ({
 
   return (
     <div className={`${theme === 'dark' ? 'bg-white/10 text-white' : 'bg-[#F7F9FB] text-black'} rounded-[8px] p-2 gap-4`}>
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0">
+      <div className="sm:flex-row sm:items-center sm:gap-0 flex flex-col items-start justify-between gap-3">
         <div className="flex items-center gap-2 font-semibold">
           <div className='p-1'>
             <Plus size={16} className='cursor-pointer font-semibold hover:text-[#A8C5DA]' />
           </div>
-          <div className='p-1 relative' ref={filterRef}>
-            <FunnelSimple 
-              size={16} 
+          <div className='relative p-1' ref={filterRef}>
+            <FunnelSimple
+              size={16}
               className={`cursor-pointer hover:text-[#A8C5DA] ${showFilters || hasActiveFilters ? 'text-[#A8C5DA]' : ''}`}
               onClick={onFilterToggle}
             />
@@ -202,7 +198,7 @@ export const OrderListHeader: React.FC<OrderListHeaderProps> = ({
             {showFilters && (
               <div className={`absolute top-full left-0 mt-2 z-50 min-w-64 rounded-lg shadow-xl border ${theme === 'dark' ? 'bg-black border-neutral-600' : 'bg-white border-gray-200'}`}>
                 <div className="p-5 space-y-5">
-                  <div className="flex items-center justify-between border-b pb-3">
+                  <div className="flex items-center justify-between pb-3 border-b">
                     <h3 className={`text-sm font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
                       Filters
                     </h3>
@@ -213,7 +209,7 @@ export const OrderListHeader: React.FC<OrderListHeaderProps> = ({
                       Clear all
                     </button>
                   </div>
-                  
+
                   {/* Status Filter */}
                   <div>
                     <label className={`block text-sm font-medium mb-2.5 ${theme === 'dark' ? 'text-gray-200' : 'text-gray-700'}`}>
@@ -244,14 +240,14 @@ export const OrderListHeader: React.FC<OrderListHeaderProps> = ({
             )}
           </div>
           <div className='p-1'>
-            <ArrowsDownUp 
-              size={16} 
+            <ArrowsDownUp
+              size={16}
               className={`cursor-pointer hover:text-[#A8C5DA] ${sortDirection === 'desc' ? 'rotate-180' : ''}`}
               onClick={handleSortClick}
             />
           </div>
         </div>
-        <div className="relative w-full sm:w-auto">
+        <div className="sm:w-auto relative w-full">
           <SearchInput
             value={searchTerm}
             onChange={onSearchChange}

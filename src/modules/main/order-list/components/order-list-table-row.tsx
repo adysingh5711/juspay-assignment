@@ -1,4 +1,3 @@
-import React from 'react';
 import { OrderListTableType } from '../types/order-list-table-type';
 import { OrderStatusBadge } from '../components/order-status-badge';
 import { CalendarBlank } from 'phosphor-react';
@@ -10,11 +9,11 @@ interface OrderListTableRowProps {
   onSelect: (checked: boolean) => void;
 }
 
-export const OrderListTableRow: React.FC<OrderListTableRowProps> = ({
+export const OrderListTableRow = ({
   order,
   isSelected,
   onSelect
-}) => {
+}: OrderListTableRowProps) => {
   const { theme } = useTheme()
   return (
     <tr className={isSelected ? theme === 'dark' ? 'bg-white/10' : 'bg-blue-50' : theme === 'dark' ? 'hover:bg-white/10' : 'hover:bg-gray-50'}>
@@ -51,7 +50,7 @@ export const OrderListTableRow: React.FC<OrderListTableRowProps> = ({
                   parent.innerHTML = `
                     <div class="h-full w-full bg-blue-500 flex items-center justify-center">
                       <span class="text-sm font-medium text-white">
-                        ${order.username.split(' ').map(word => word.charAt(0)).join('').toUpperCase().slice(0, 2)}
+                        ${order.username.split(' ').map((word: string) => word.charAt(0)).join('').toUpperCase().slice(0, 2)}
                       </span>
                     </div>
                   `;

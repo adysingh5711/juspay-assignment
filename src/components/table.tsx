@@ -1,5 +1,4 @@
 // src/components/table.tsx
-import React from "react";
 import {
   ColumnDef,
   flexRender,
@@ -35,9 +34,9 @@ export function Table<TData>({ columns, data, getRowClassName, selectedRows }: T
                   {header.isPlaceholder
                     ? null
                     : flexRender(
-                        header.column.columnDef.header,
-                        header.getContext()
-                      )}
+                      header.column.columnDef.header,
+                      header.getContext()
+                    )}
                 </th>
               ))}
             </tr>
@@ -47,7 +46,7 @@ export function Table<TData>({ columns, data, getRowClassName, selectedRows }: T
           {table.getRowModel().rows.map((row) => {
             const isSelected = selectedRows?.includes((row.original as any).id) || false;
             const rowClassName = getRowClassName ? getRowClassName(row.original, isSelected, theme) :
-                (isSelected ? (theme === 'dark' ? 'bg-white/10' : 'bg-blue-50') : (theme === 'dark' ? 'hover:bg-white/10' : 'hover:bg-gray-50'));
+              (isSelected ? (theme === 'dark' ? 'bg-white/10' : 'bg-blue-50') : (theme === 'dark' ? 'hover:bg-white/10' : 'hover:bg-gray-50'));
 
             return (
               <tr key={row.id} className={rowClassName}>

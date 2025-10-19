@@ -1,4 +1,3 @@
-import React from 'react';
 import { useTheme } from '../../../contexts/theme-context';
 
 interface OrderListTableHeaderProps {
@@ -7,11 +6,11 @@ interface OrderListTableHeaderProps {
   onSelectAll: (checked: boolean) => void;
 }
 
-export const OrderListTableHeader: React.FC<OrderListTableHeaderProps> = ({
+export const OrderListTableHeader = ({
   allSelected,
   someSelected,
   onSelectAll
-}) => {
+}: OrderListTableHeaderProps) => {
   const { theme } = useTheme();
   return (
     <thead>

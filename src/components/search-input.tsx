@@ -38,7 +38,7 @@ export const SearchInput = ({
             <input
                 type="text"
                 placeholder="Search"
-                className={`w-full ${backgroundColor} outline-none rounded-[8px] ${theme === 'dark' ? 'text-white/80 placeholder:text-white/20' : 'text-black/80 placeholder:text-black/20'} focus:outline-none focus:ring-0 active:outline-none active:ring-0 pr-9 pl-7 py-1 text-sm transition-all duration-300 ${isFocused ? 'border-[1px] border-[#A8C5DA]' : ''}`}
+                className={`w-full ${backgroundColor} ${borderColor} outline-none rounded-[8px] ${theme === 'dark' ? 'text-white/80 placeholder:text-white/20' : 'text-black/80 placeholder:text-black/20'} focus:outline-none focus:ring-0 active:outline-none active:ring-0 pr-9 pl-7 py-1 text-sm transition-all duration-300 ${isFocused ? 'border-[1px] border-[#A8C5DA]' : ''}`}
                 value={value}
                 onChange={(e) => onChange(e.target.value)}
                 onFocus={() => setIsFocused(true)}

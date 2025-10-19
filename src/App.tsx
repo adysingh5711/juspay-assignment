@@ -1,4 +1,3 @@
-import React from 'react';
 import { RouterProvider } from 'react-router-dom';
 import { router } from './router';
 
@@ -10,7 +9,7 @@ import { router } from './router';
  * The router configuration is separated into its own module for better organization
  * and maintainability, following the single responsibility principle.
  */
-const App: React.FC = () => {
+const App = () => {
   return <RouterProvider router={router} />;
 };
 
