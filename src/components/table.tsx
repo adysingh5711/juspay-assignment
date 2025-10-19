@@ -27,11 +27,15 @@ export function Table<TData>({ columns, data, getRowClassName, selectedRows }: T
   return (
     <div className="sm:rounded-lg relative overflow-x-auto">
       <table className="text-black/40 dark:text-gray-400 w-full text-sm text-left">
-        <thead className={`text-sm ${theme === 'dark' ? ' text-white/80' : 'text-black/40'}`}>
+        <thead className="text-sm">
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
-                <th key={header.id} scope="col" className="px-6 py-3 font-normal">
+                <th
+                  key={header.id}
+                  scope="col"
+                  className={`px-6 py-3 font-normal border-b ${theme === 'dark' ? 'border-white/10 text-white/80' : "text-black/40 border-b-black/20"}`}
+                >
                   {header.isPlaceholder
                     ? null
                     : flexRender(
@@ -43,8 +47,8 @@ export function Table<TData>({ columns, data, getRowClassName, selectedRows }: T
             </tr>
           ))}
         </thead>
-        <tbody className={`divide-y ${theme === 'dark' ? 'divide-white/10' : 'divide-gray-200'}`}>
-          {table.getRowModel().rows.map((row) => {
+        <tbody className="[&>tr:hover+tr]:border-t-0">
+          {table.getRowModel().rows.map((row, rowIndex) => {
             const [isRowHovered, setIsRowHovered] = useState(false);
             const isSelected = selectedRows?.includes((row.original as any).id) || false;
             const rowClassName = getRowClassName ? getRowClassName(row.original, isSelected, theme) :
@@ -53,14 +57,16 @@ export function Table<TData>({ columns, data, getRowClassName, selectedRows }: T
             return (
               <tr
                 key={row.id}
-                className={rowClassName}
+                className={`${rowClassName} border-t ${rowIndex === 0 ? 'border-t-0' : ''} ${theme === 'dark' ? 'border-white/10' : 'border-gray-200'} hover:border-t-0`}
                 onMouseEnter={() => setIsRowHovered(true)}
                 onMouseLeave={() => setIsRowHovered(false)}
               >
-                {row.getVisibleCells().map((cell) => (
+                {row.getVisibleCells().map((cell, index, array) => (
                   <td
                     key={cell.id}
-                    className={`px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-thin ${theme === 'dark' ? 'text-white/80' : 'text-black'}`}
+                    className={`px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-thin ${theme === 'dark' ? 'text-white/80' : 'text-black'}
+                    ${index === 0 ? 'rounded-l-lg' : ''} 
+                    ${index === array.length - 1 ? 'rounded-r-lg' : ''}`}
                   >
                     {flexRender(cell.column.columnDef.cell, { ...cell.getContext(), isRowHovered })}
                   </td>

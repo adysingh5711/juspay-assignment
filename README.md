@@ -239,13 +239,29 @@ The application supports multiple environments:
 
 **Focused Page Implementation**: While the Figma design included 5 pages at the bottom, strategically implemented only two pages to demonstrate full functionality without redundant data. This approach showcases the complete feature set while maintaining clean, purposeful content.
 
+**Enhanced Row Selection Visibility**: Modified the selected row color from the original Figma design to provide better visual feedback and highlight selection more prominently. This improvement enhances user experience by making it clearer which rows are selected, improving the overall usability of the table interface.
+
 ## Challenges Faced
 
-**SubList Icon Spacing Complexity**: Setting up the subList in the left sidebar presented significant challenges. The Figma design showed spacing for sub-items but no actual icons, while main headings required icons. Initial attempts using padding proved inadequate for responsive design. The solution involved implementing an empty `<div className="size-4"></div>` container for subList items that maintains the same space allocation as the icon container in main items, providing better responsive behavior and visual consistency.
+**SubList Icon Spacing Complexity**
+- What was wrong: sub-items had reserved spacing in Figma but no icons, causing alignment issues.
+- Wrong approach: adding padding directly led to inconsistent spacing across breakpoints.
+- Correct approach: use an empty placeholder container (e.g. `<div className="size-4"></div>`) so sub-items reserve the same space as iconed items, keeping alignment responsive and consistent.
 
-**Data Integrity in Sorting**: The original Figma design contained repeated IDs after every 5 items, which caused sorting functionality to break by grouping identical IDs together. This required a workaround by modifying the data structure to ensure unique identifiers while maintaining the visual design integrity and sorting performance.
+**Data Integrity in Sorting**
+- What was wrong: repeated IDs in the design caused sorting to group identical items incorrectly.
+- Wrong approach: relying on design-provided IDs without normalization.
+- Correct approach: ensure unique identifiers in the data model before sorting so sorting behaves predictably while preserving the visual dataset.
 
-**Responsive Icon Management**: Balancing icon visibility and spacing across different screen sizes required careful consideration of container sizing, ensuring that both icon and non-icon states maintain proper alignment and visual hierarchy.
+**Responsive Icon Management**
+- What was wrong: icons and non-icon items misaligned across screen sizes.
+- Wrong approach: fixed-size containers or extra padding that broke layout at different widths.
+- Correct approach: size containers consistently (and use responsive utilities) so both icon and non-icon states maintain proper alignment and spacing.
+
+**Table row hover / border handling**
+- What was wrong: cell-level radius/padding were overridden by table-level styles, so hovering removed only part of the border.
+- Wrong approach: using `divide-y`, `border-b` or `border-y` caused partial removals, jumps, or global side-effects.
+- Correct approach: render rows with `border-t` (skip first) and on hover remove that row's top border plus the next row's top border via `[&>tr:hover+tr]:border-t-0`; keep an explicit header bottom border.
 
 ## Improvements Made
 

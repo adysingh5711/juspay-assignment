@@ -17,14 +17,14 @@ export const OrderListTableRow = ({
   const { theme } = useTheme()
   return (
     <tr className={isSelected ? theme === 'dark' ? 'bg-white/10' : 'bg-blue-50' : theme === 'dark' ? 'hover:bg-white/10' : 'hover:bg-gray-50'}>
-      <td className="px-6 py-4 whitespace-nowrap">
+      <td className="px-6 py-4 whitespace-nowrap rounded-[0.5rem_0_0_0.5rem]">
         <div className="flex items-center">
           <input
             title="Orders List"
             type="checkbox"
             checked={isSelected}
             onChange={(e) => onSelect(e.target.checked)}
-            className="h-4 w-4 text-white border-gray-300 rounded checked:bg-black checked:border-black focus:ring-black focus:ring-offset-0 [&:checked]:bg-black [&:checked]:border-black [&:checked]:text-white dark:bg-black dark:border-black dark:[&:checked]:bg-[#C6C7F8] dark:[&:checked]:border-[#C6C7F8]"
+            className="h-4 w-4 text-white border-gray-300 rounded focus:ring-black focus:ring-offset-0 [&:checked]:bg-black [&:checked]:border-black [&:checked]:text-white dark:bg-black dark:border-black dark:[&:checked]:bg-[#C6C7F8] dark:[&:checked]:border-[#C6C7F8]"
             style={{
               accentColor: theme === 'dark' ? '#C6C7F8' : 'black'
             }}
