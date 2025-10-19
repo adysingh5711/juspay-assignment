@@ -2,7 +2,7 @@
 
 A pixel-perfect implementation of a modern SaaS dashboard built with React, TypeScript, and Tailwind CSS. This project demonstrates advanced React patterns, performance optimizations, and comprehensive user experience features.
 
-### Deployeed Link - [juspay-ui-designer-assignment-aditya.vercel.app/](https://juspay-ui-designer-assignment-aditya.vercel.app)
+### Deployeed Link - [juspay-ui-designer-assignment-aditya.vercel.app](https://juspay-ui-designer-assignment-aditya.vercel.app)
 
 ## Table of Contents
 
